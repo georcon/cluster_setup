@@ -1,0 +1,5 @@
+clouds:
+  gloud:
+    type: maas
+    auth-types: [oauth1]
+    endpoint: http://10.0.110.0:5240/MAAS
