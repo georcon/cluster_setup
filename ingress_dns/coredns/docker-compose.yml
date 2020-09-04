@@ -1,0 +1,11 @@
+version: '3'
+services:
+  web:
+    image: coredns/coredns
+    ports:
+      - "8053:53/udp"
+    volumes:
+            - ./coredns/:/root/
+    command:
+            -conf /root/Corefile
+    restart: always 

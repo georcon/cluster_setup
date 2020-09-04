@@ -1,0 +1,6 @@
+kubernetes-worker:
+    annotations:
+      gui-x: '90'
+      gui-y: '850'
+    charm: cs:~containers/kubernetes-worker-692
+    constraints: cores=8 mem=8G root-disk=16G

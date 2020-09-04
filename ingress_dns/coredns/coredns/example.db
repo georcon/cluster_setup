@@ -1,0 +1,11 @@
+etds.me. IN SOA georcon-aus.ddns.net. hostmaster.example.com. 2020090430 7200 3600 1209600 3600
+@ IN A 101.112.248.117
+@ IN TXT "This is a CoreDNS for etds.me v0.0"
+20200904._domainkey.auth.etds.me. IN TXT "k=rsa; p=MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAs6bzQ44VAfDiCHEQ9zXl482s8zmOxP4ukoOSGP3zkCi+XtnA9Wu68LYldMmvYbMhqgvkDh2ZbgGjtb9Eq+xWF+YdBj1Xalo55XFu86dhvMmihdoM+nffpopVxWpH6MqDVwN3EGqDlmm2wlUSnK/mzlPRq3Ec+u3pJ/D+CWB3l8sHcZABf9JRsUO6xceAm4xOTK4awqEwuQbiOQnkSoWnDHqWlORqZfGNLN+4oAy7K8YBXkbTjFps/pkTPi1ARGSlXMHfnFHexvzbQDP7xCaxsTInDGvBHrFtuFH3uuFL5GCfXESgXYSmVMuiAAlnzAQN4Ms90tAHkXHc3bGluvrTzgEv67m73G5bPzE7b9e+IPipkIQ4EZ45d/vIzk2loBfT2+CQRBAPLGtN1bkad30adW2Trdg4KEX188v2uSasP2+Nrn2xb7FhnzkO3pt7TJDYRruzglABDXBN7vQXX6SWRDVCuD/dDoA4wH7zFlFxZYNt6F8RVIProsQBrizG8hhY29gi3SHgj5xHNRbRARtAYxDKaQQztl1pN52KHiJIOPskbuzotUIQoXFas8x4F6kl0VY0FSMD0kyku03TzdL3yeqMbcLipZSnIlKRrDehJ9PPKt8qJJzbK7GWiZRU1qM48by02O75huTFv1u0ZHSWXDW/IxckU3iUrHKYHKjWB2sCAwEAAQ=="
+_dmarc.auth.etds.me. IN TXT "v=DMARC1; p=none"
+auth.etds.me. IN TXT "v=spf1 ip4:101.112.248.117 ~all"
+auth.etds.me. IN A 101.112.248.117
+auth.etds.me. IN MX 10 mail.auth.etds.me. 
+vpn.etds.me. IN CNAME aus.georcon.com.
+117.248.112.101.in-addr.arpa. IN PTR auth.etds.me.
+jira.etds.me. IN A 101.112.248.117

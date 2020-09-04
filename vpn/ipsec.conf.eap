@@ -16,12 +16,12 @@ conn ikev2-vpn
     leftid=@vpn.etds.me
     leftcert=server-cert.pem
     leftsendcert=always
-    leftsubnet=192.168.200.0/24
+    leftsubnet=172.29.0.0/24
     right=%any
     rightid=%any
     rightauth=eap-mschapv2
-    rightsourceip=192.168.200.100/24-192.168.200.150
-    rightdns=8.8.8.8,8.8.4.4
+    rightsourceip=172.29.199.1-172.29.199.200
+    rightdns=172.29.0.1,8.8.8.8,8.8.4.4
     rightsendcert=never
     eap_identity=%identity
     ike=chacha20poly1305-sha512-curve25519-prfsha512,aes256gcm16-sha384-prfsha384-ecp384,aes256-sha1-modp1024,aes128-sha1-modp1024,3des-sha1-modp1024!

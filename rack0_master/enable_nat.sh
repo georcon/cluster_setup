@@ -34,15 +34,25 @@ echo "   Enabling DynamicAddr.."
 echo "1" > /proc/sys/net/ipv4/ip_dynaddr 
 echo "   Clearing any existing rules and setting default policy.."
 
+
+#THIS IS THE CURRENT RULE IN USE:
+# sudo iptables --table nat --append POSTROUTING --out-interface enp5s0 -j MASQUERADE
+# sudo iptables --append FORWARD --in-interface enp9s0 -j ACCEPT
+#NOTE THAT THE FOLLOWING BLOCKS ROUTED CLUSTER-LOCAL TRAFFIC AND THE VPN!!!"
+
+
+#*filter
+#:INPUT ACCEPT [0:0]
+#:FORWARD DROP [0:0]
+#:OUTPUT ACCEPT [0:0]
+
+#-A FORWARD -i "$EXTIF" -o "$INTIF" -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT 
+
 iptables-restore <<-EOF
 *nat
 -A POSTROUTING -o "$EXTIF" -j MASQUERADE
 COMMIT
 *filter
-:INPUT ACCEPT [0:0]
-:FORWARD DROP [0:0]
-:OUTPUT ACCEPT [0:0]
--A FORWARD -i "$EXTIF" -o "$INTIF" -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT 
 -A FORWARD -i "$INTIF" -o "$EXTIF" -j ACCEPT
 -A FORWARD -j LOG
 COMMIT

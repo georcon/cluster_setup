@@ -1,0 +1,11 @@
+version: '3'
+services:
+  smtp:
+    image: bytemark/smtp
+    restart: always
+    ports: 
+      - '25:25/tcp'
+    volumes:
+      - './exim4:/etc/exim4'
+    environment:
+      MAILNAME: auth.etds.me
