@@ -3,12 +3,14 @@
 source .env
 
 echo "Installing MAAS"
-sudo snap install maas --channel=2.8
+sudo snap install maas
 
 echo "Patching MAAS"
 sudo mkdir -p /usr/src/maas_hooks
 sudo cp hooks.py /usr/src/maas_hooks/
+sudo cp rc.local /etc/
 sudo mount --bind /usr/src/maas_hooks/hooks.py /snap/maas/current/lib/python3.6/site-packages/metadataserver/builtin_scripts/hooks.py
+
 
 echo "Installing PostgreSQL"
 sudo apt install postgresql -y
@@ -25,4 +27,5 @@ sudo maas init region+rack --database-uri "postgres://$MAAS_DBUSER:$MAAS_DBPASS@
 
 sudo maas createadmin --username $MAAS_USER --password $MAAS_PASS --email $MAAS_EMAIL
 
+echo 
 echo "Done!"

@@ -1,4 +1,5 @@
 echo -e "\n\nLoading simple rc.firewall-iptables version $FWVER..\n"
+
 DEPMOD=/sbin/depmod
 MODPROBE=/sbin/modprobe
 
