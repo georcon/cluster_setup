@@ -9,6 +9,10 @@ echo "Patching MAAS"
 sudo mkdir -p /usr/src/maas_hooks
 sudo cp hooks.py /usr/src/maas_hooks/
 sudo cp rc.local /etc/
+
+#Ensure that rc.local is executable
+sudo chmod a+x /etc/rc.local
+
 sudo mount --bind /usr/src/maas_hooks/hooks.py /snap/maas/current/lib/python3.6/site-packages/metadataserver/builtin_scripts/hooks.py
 
 

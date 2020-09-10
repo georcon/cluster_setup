@@ -3,9 +3,14 @@ services:
   web:
     image: coredns/coredns
     ports:
-      - "8053:53/udp"
+      - "10.0.110.0:53:53/udp"
+        #networks:
+        #- coredns_net
     volumes:
-            - ./coredns/:/root/
+            - ./config/:/root/
     command:
             -conf /root/Corefile
-    restart: always 
+    restart: always
+
+    #networks: 
+    #coredns_net:

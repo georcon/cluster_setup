@@ -1,0 +1,3 @@
+#! /bin/bash
+
+maas login georcon http://localhost:5240/MAAS <API KEY HERE> 

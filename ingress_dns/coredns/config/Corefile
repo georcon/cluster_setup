@@ -5,7 +5,7 @@
 }
 
 etds.me:53 {
-    file /root/example.db
+    file /root/etds.me.db
     log
     errors
 }

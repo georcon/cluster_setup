@@ -35,6 +35,17 @@ echo "   Enabling DynamicAddr.."
 echo "1" > /proc/sys/net/ipv4/ip_dynaddr 
 echo "   Clearing any existing rules and setting default policy.."
 
+###THIS IS THE RULE CONFIGURATION USED
+
+#-P INPUT ACCEPT
+
+#-P FORWARD ACCEPT
+#-P OUTPUT ACCEPT
+#-A FORWARD -i enp9s0 -o enp5s0 -j ACCEPT
+#-A FORWARD -j LOG
+
+#MAKE SURE IT MATCHES (sudo iptables -S)
+
 
 #THIS IS THE CURRENT RULE IN USE:
 # sudo iptables --table nat --append POSTROUTING --out-interface enp5s0 -j MASQUERADE

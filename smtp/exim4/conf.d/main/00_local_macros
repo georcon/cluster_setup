@@ -1,0 +1,5 @@
+DKIM_CANON = relaxed
+DKIM_SELECTOR = 20200904
+DKIM_DOMAIN = auth.etds.me
+DKIM_FILE /etc/exim4/ssdkim/auth.etds.me-private.pem 
+
