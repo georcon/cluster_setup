@@ -7,5 +7,11 @@ auth.etds.me. IN TXT "v=spf1 ip4:101.112.187.129 ~all"
 auth.etds.me. IN A 101.112.187.129
 auth.etds.me. IN MX 10 mail.auth.etds.me. 
 vpn.etds.me. IN CNAME aus.georcon.com.
-117.248.112.101.in-addr.arpa. IN PTR auth.etds.me.
-jira.etds.me. IN A 101.112.187.129
+demo.etds.me. IN CNAME aus.georcon.com.
+jira.etds.me. IN CNAME aus.georcon.com.
+jiracore.etds.me. IN CNAME aus.georcon.com.
+jirasd.etds.me. IN CNAME aus.georcon.com.
+*.etds.me. IN CNAME aus.georcon.com.
+keycloak.etds.me. IN CNAME aus.georcon.com.
+artifactory.etds.me. IN A aus.georcon.com.
+129.187.112.101.in-addr.arpa. IN PTR auth.etds.me.

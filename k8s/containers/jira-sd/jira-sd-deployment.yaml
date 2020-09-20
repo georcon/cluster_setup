@@ -1,0 +1,64 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: jira-sd
+  labels:
+    app: jira-sd
+spec:
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080
+  selector:
+    app: jira-sd
+  type: LoadBalancer
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.19.0 (f63a961c)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: jira-sd
+  name: jira-sd
+spec:
+  replicas: 1
+  strategy: {}
+  selector:
+    matchLabels:
+      app: jira-sd
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.19.0 (f63a961c)
+      creationTimestamp: null
+
+      labels:
+        app: jira-sd
+    spec:
+      containers:
+      - env:
+        - name: ATL_TOMCAT_CONTEXTPATH
+        - name: ATL_PROXY_NAME
+          value: "sd.etds.me"
+        - name: ATL_PROXY_PORT
+          value: "443"
+        - name: ATL_TOMCAT_PORT
+          value: "8080"
+        - name: ATL_TOMCAT_SCHEME
+          value: https
+        - name: ATL_TOMCAT_SECURE
+          value: "true"
+        - name: JVM_MAXIMUM_MEMORY
+          value: 4096m
+        - name: JVM_MINIMUM_MEMORY
+          value: 2048m
+        image: atlassian/jira-software:latest
+        name: jira-sd
+        resources: {}
+      restartPolicy: Always
+status: {}

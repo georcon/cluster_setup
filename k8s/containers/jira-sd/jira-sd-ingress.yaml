@@ -1,13 +1,13 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: jira
+  name: jira-sd
 spec:
   rules:
-  - host: jira.etds.me
+  - host: jirasd.etds.me
     http:
       paths:
       - backend:
-          serviceName: jira
+          serviceName: jira-sd
           servicePort: 8080
 

@@ -1,13 +1,13 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: jira
+  name: nginx
 spec:
   rules:
-  - host: jira.etds.me
+  - host: nginx.etds.me
     http:
       paths:
       - backend:
-          serviceName: jira
-          servicePort: 8080
+          serviceName: nginx
+          servicePort: 80
 
