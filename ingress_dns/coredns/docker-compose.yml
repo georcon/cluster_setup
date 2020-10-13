@@ -3,7 +3,7 @@ services:
   web:
     image: coredns/coredns
     ports:
-      - "10.0.110.0:53:53/udp"
+      - "10.1.1.1:53:53/udp"
         #networks:
         #- coredns_net
     volumes:

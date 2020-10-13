@@ -1,0 +1,29 @@
+sdte.local. IN SOA ns1. sysadmin.sdte.local. 2020300912 7200 3600 1209600 3600 ; SOA
+
+sdte.local. IN TXT "This is a CoreDNS for sdte.local v0.1" ;
+
+;sdte.local. IN A 10.10.10.21;
+;sdte.local. IN A 10.10.10.22;
+
+
+;Glue records
+MGMT021.internal.sdte.local. IN A 10.10.10.21;
+MGMT022.internal.sdte.local. IN A 10.10.10.22;
+
+;Delegation
+;*.sdte.local. IN NS MGMT021.sdte.local.;
+;*.sdte.local. IN NS MGMT022.sdte.local.;
+internal.sdte.local. IN NS MGMT021.internal.sdte.local.;
+internal.sdte.local. IN NS MGMT022.internal.sdte.local.;
+
+;*.internal.sdte.local. IN NS MGMT021.internal.sdte.local.;
+;*.internal.sdte.local. IN NS MGMT022.internal.sdte.local.;
+
+;vSphere, ESXi
+sdte-01-01.mgmt.sdte.local. IN A 10.10.10.41;
+sdte-01-02.mgmt.sdte.local. IN A 10.10.10.42;
+sdte-01-03.mgmt.sdte.local. IN A 10.10.10.43;
+sdte-01-04.mgmt.sdte.local. IN A 10.10.10.44;
+
+sdte.local. IN TXT "END OF ZONE v0.1";
+

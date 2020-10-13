@@ -1,11 +1,23 @@
 .:53 {
-    forward . 8.8.8.8 9.9.9.9
+    forward . 8.8.8.8 8.8.4.4
     log
     errors
 }
 
-etds.me:53 {
-    file /root/etds.me.db
+sdte.dev:53 {
+    file /root/sdte.dev.db
+    log
+    errors
+}
+
+internal.sdte.local:53 {
+    forward . 10.10.10.21 10.10.10.22
+    log
+    errors
+}
+
+sdte.local:53 {
+    file /root/sdte.local.db
     log
     errors
 }

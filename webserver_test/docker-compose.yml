@@ -1,0 +1,16 @@
+version: '3'
+services:
+  web:
+    image: nginx
+    ports:
+      - "10.1.1.1:80:80/tcp"
+      - "10.1.1.1:443:443/tcp"
+        #networks:
+        #- coredns_net
+    volumes:
+      - ./config/content/:/usr/share/nginx/html:ro
+      - ./config/conf.d:/etc/nginx/conf.d:ro
+    restart: always
+
+    #networks: 
+    #coredns_net:
