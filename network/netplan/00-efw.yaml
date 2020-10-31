@@ -1,0 +1,20 @@
+# This is the network config written by 'subiquity'
+network:
+  ethernets:
+
+    ens160:
+      addresses:
+        - 10.0.2.100/24
+      gateway4: 10.0.2.1
+      nameservers:
+        addresses:
+          - 8.8.8.8
+          - 8.8.4.4
+ 
+    ens192:
+      addresses:
+        - 10.1.1.254/24
+      routes:
+          - to: 10.10.106.1/32
+            via: 10.1.1.12
+  version: 2

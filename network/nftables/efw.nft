@@ -1,0 +1,28 @@
+#!/usr/sbin/nft -f
+
+#
+# External Firewall temporary rules
+#
+
+flush ruleset
+
+define extif				="ens160"
+define intif				="ens192"
+
+define dmz_net			= 10.1.1.0/24
+define nat_subnets	= {$dmz_net}
+
+#table filter {
+#	chain input {
+#		type filter hook input priority 0; policy drop; 
+#		ct state established, related counter accept
+#	}
+#}
+
+table ip nat {
+	chain postrouting {
+		type nat hook postrouting priority srcnat; policy accept;
+		ip saddr 10.1.1.0/24 oif "ens160" snat to 10.0.2.100
+		masquerade
+	}
+}
