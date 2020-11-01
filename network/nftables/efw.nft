@@ -22,8 +22,14 @@ define nat_subnets	= {$dmz_net}
 table ip nat {
 	chain postrouting {
 		type nat hook postrouting priority srcnat; policy accept;
-		ip daddr 127.0.0.53 accept;
-		ip saddr 10.1.1.0/24 ip daddr != 127.0.0.1 oif "ens160" snat to 10.0.2.100
-		masquerade
+		#ip daddr 127.0.0.53 accept;
+		ip saddr {10.1.1.0/24, 10.10.106.0/24, 10.10.10.0/24} ip daddr != 127.0.0.1 oif "ens160" snat to 10.0.2.200
+		#ip saddr {10.1.1.0/24,10.10.106.0/24} oif $extif masquerade;
 	}
+
+  chain prerouting {
+    type nat hook prerouting priority -100;
+    iif $extif udp dport {500, 4500} dnat 10.10.106.1
+    iif $extif udp dport {53} dnat 10.1.1.31
+  }
 }
