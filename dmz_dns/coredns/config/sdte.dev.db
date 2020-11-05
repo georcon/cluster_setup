@@ -7,18 +7,23 @@ sdte.dev. IN SOA dns.sdte.dev. hostmaster.sdte.dev 2020300912 7200 3600 1209600 
 dco.sdte.dev.   IN CNAME dcolab.ddns.net. ;
 *.dco.sdte.dev. IN CNAME dco.sdte.dev. ;
 certest.dco.sdte.dev. IN A 59.167.63.236 ;
+vpn.sdte.dev.   IN A 59.167.63.236;
 dco.sdte.dev.   IN TXT "DCO subdomain v0.2" ;
-auth.sdte.dev.       IN TXT "v=spf1 mx a:auth.sdte.dev a:stde.dev -all" ;
+vpn1.sdte.dev.  IN A 59.167.63.236;
+;;_acme-challenge.certest.dco.sdte.dev. IN TXT a6HXnVQu9PMLryEl8nmY0zDP8By9fSTV5FTK_BEOPjM
+_acme-challenge.testpage.sdte.dev. IN TXT O-XyVdkwiizYLm_v_kCWh7op76h3GKa5N3hVSIPAR-s;
+_acme-challenge.jira.sdte.dev. IN TXT 3QtPtoXI3l0dn3SWGG7bV9Y8Bqe_NFMZkSGwClgfCVM;
+;auth.sdte.dev.       IN TXT "v=spf1 mx a:auth.sdte.dev a:stde.dev -all" ;
 
 ;SDTE Entries
-auth.sdte.dev.  IN A 59.167.63.236 ;
-auth.sdte.dev.  IN MX 10 auth.sdte.dev. ;
+;auth.sdte.dev.  IN A 59.167.63.236 ;
+;auth.sdte.dev.  IN MX 10 auth.sdte.dev. ;
 ;sdte.dev.       IN MX 59.167.63.236 ;
-auth.sdte.dev.  IN TXT "Authentication domain" ;
+;auth.sdte.dev.  IN TXT "Authentication domain" ;
 
 dco.sdte.dev.   IN TXT "aaa DCO subdomain v0.1" ;
 jira.sdte.dev.  IN A 59.167.63.236 ;
+testpage.sdte.dev. IN A 59.167.63.236;
 
 236.63.167.59.in-addr.arpa. IN PTR sdte.me. ;
 236.63.167.59.in-addr.arpa. IN PTR auth.sdte.me. ;
-;;_acme-challenge.certest.dco.sdte.dev. IN TXT a6HXnVQu9PMLryEl8nmY0zDP8By9fSTV5FTK_BEOPjM
