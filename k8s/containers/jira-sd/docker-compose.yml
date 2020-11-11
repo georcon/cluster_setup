@@ -1,0 +1,27 @@
+version: '3'
+services:
+  sd:
+    image: atlassian/jira-servicedesk:latest
+    container_name: sd
+    networks:
+      - sdnet
+    volumes: 
+      - sd_home:/var/atlassian/application-data/jira
+    ports: 
+      - 8080:8080
+    environment:
+      - JVM_MINIMUM_MEMORY=512m
+      - JVM_MAXIMUM_MEMORY=2048m
+      - ATL_TOMCAT_PORT=8080
+      - ATL_TOMCAT_CONTEXTPATH=
+      - ATL_PROXY_NAME=sd.sdte.dev
+      - ATL_PROXY_PORT=443
+      - ATL_TOMCAT_SCHEME=https
+      - ATL_TOMCAT_SECURE=true
+volumes:
+  sd_home:
+    external: true
+
+networks:
+  sdnet:
+
