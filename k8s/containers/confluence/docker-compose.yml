@@ -1,0 +1,49 @@
+version: '3'
+services:
+  confluence:
+    image: atlassian/confluence-server:latest
+    container_name: confluence
+    networks:
+      - confluencenet
+    volumes: 
+      - conf_home:/var/atlassian/application-data/jira
+    ports: 
+      - 8090:8090
+      - 8091:8091
+    environment:
+      - JVM_MINIMUM_MEMORY=1024m
+      - JVM_MAXIMUM_MEMORY=2048m
+      - ATL_TOMCAT_PORT=8090
+      - ATL_TOMCAT_CONTEXTPATH=
+      - ATL_PROXY_NAME=confluence.sdte.dev
+      - ATL_PROXY_PORT=443
+      - ATL_TOMCAT_SCHEME=https
+      - ATL_TOMCAT_SECURE=true
+
+  postgresql:
+    image: postgres:10-alpine
+    container_name: postgres
+    hostname: postgres
+    networks:
+      - confluencenet
+    volumes:
+      - postgresqldata:/var/lib/postgresql/data
+    environment:
+      - 'POSTGRES_USER=confluencedb'
+      # CHANGE THE PASSWORD!
+      - 'POSTGRES_PASSWORD=jellyfish'
+      - 'POSTGRES_DB=confluencedb'
+      - 'POSTGRES_ENCODING=UTF8'
+      - 'POSTGRES_COLLATE=C'
+      - 'POSTGRES_COLLATE_TYPE=C'
+
+networks:
+  confluencenet:
+
+volumes:
+  conf_home:
+    external: true
+  postgresqldata:
+    external: true
+
+
