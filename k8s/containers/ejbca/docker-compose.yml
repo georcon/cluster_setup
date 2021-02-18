@@ -1,0 +1,24 @@
+version: '3'
+services:
+  ejbca:
+    image: primekey/ejbca-ce
+    container_name: sdte-ejbca
+    hostname: ejbca.sdte.dev
+    ports: 
+      - 80:8080
+      - 443:8443
+    environment:
+            #- TLS_SETUP_ENABLED=simple
+      - DATABASE_JDBC_URL=jdbc:postgresql://db/ejbca
+      - DATABASE_USER=ejbca
+      - DATABASE_PASSWORD=ejbca
+
+  db:
+    image: postgres:13.1-alpine
+    container_name: sdte-ejbca-db
+    volumes:
+      - ./postgresql/data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=ejbca
+      - POSTGRES_PASSWORD=ejbca
+
