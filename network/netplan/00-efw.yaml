@@ -1,11 +1,16 @@
-# This is the network config written by 'subiquity'
+#00-efw-ph
+#
+#External Firewall Placeholder Netplan File
+#
+#ens160: External link to orphan
+#ens192: DMZ RED Side
+
 network:
   ethernets:
-
     ens160:
       addresses:
-        - 10.0.2.200/24
-      gateway4: 10.0.2.1
+        - 192.168.15.30/24
+      gateway4: 192.168.15.1
       nameservers:
         addresses:
           - 8.8.8.8
@@ -13,10 +18,26 @@ network:
  
     ens192:
       addresses:
-        - 10.1.1.254/24
+        - 10.1.2.254/24
       routes:
-          - to: 10.10.106.1/32
-            via: 10.1.1.12
+          - to: 10.10.106.0/24
+            via: 10.1.2.1
           - to: 10.10.10.0/24
-            via: 10.1.1.12
+            via: 10.1.2.1
+          - to: 10.10.110.0/24
+            via: 10.1.2.1
+          - to: 10.1.1.0/24
+            via: 10.1.2.1
+          - to: 10.10.112.0/24
+            via: 10.1.2.1
+          - to: 10.10.113.0/24
+            via: 10.1.2.1
+          - to: 10.10.111.0/24
+            via: 10.1.2.1
+          - to: 10.11.1.0/24
+            via: 10.1.2.1
+          - to: 10.10.107.0/24
+            via: 10.1.2.1
+          - to: 10.113.0.0/16
+            via: 10.1.2.1
   version: 2
