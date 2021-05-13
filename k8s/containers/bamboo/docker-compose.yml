@@ -1,0 +1,22 @@
+version: '3'
+services:
+  bamboo:
+    image: atlassian/bamboo-server:latest
+    container_name: bamboo
+    volumes: 
+      - bambooVolume:/var/atlassian/application-data/bamboo
+        #- ./conf:/opt/atlassian/bamboo/conf
+    ports: 
+      - 54663:54663
+      - 8085:8085
+    environment:
+      - JVM_MINIMUM_MEMORY=2048m
+      - JVM_MAXIMUM_MEMORY=4096m
+      - SERVER_PROXY_NAME=bamboo.sdte.dev
+      - SERVER_PROXY_PORT=443
+      - SERVER_SCHEME=https
+      - SERVER_SECURE=true
+volumes:
+  bambooVolume:
+    external: true
+

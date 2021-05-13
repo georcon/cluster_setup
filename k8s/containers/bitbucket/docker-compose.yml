@@ -1,0 +1,23 @@
+version: '3'
+services:
+  bitbucket:
+    image: atlassian/bitbucket-server:latest
+    container_name: bitbucket
+    volumes: 
+      - bitbucket_volume:/var/atlassian/application-data/bitbucket
+    ports: 
+      - 7990:7990
+      - 7999:7999
+    environment:
+      - JVM_MINIMUM_MEMORY=2048m
+      - JVM_MAXIMUM_MEMORY=4096m
+
+      - SERVER_PROXY_NAME=bitbucket.sdte.dev
+      - SERVER_PROXY_PORT=443
+      - SERVER_SCHEME=https
+      - SERVER_SECURE=true
+volumes:
+  bitbucket_volume:
+    external: true
+
+

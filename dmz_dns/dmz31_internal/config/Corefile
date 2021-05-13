@@ -10,14 +10,14 @@ sdte.dev:53 {
     errors
 }
 
-internal.sdte.local:53 {
+sdte.local:53 {
     forward . 10.10.10.21 10.10.10.22
     log
     errors
 }
 
-sdte.local:53 {
-    file /root/sdte.local.db
+10.10.10.0/24 {
+    forward . 10.10.10.21 10.10.10.22
     log
     errors
 }
