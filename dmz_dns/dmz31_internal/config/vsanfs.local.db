@@ -1,0 +1,15 @@
+vsanfs.local. IN SOA dns.vsanfs.local. hostmaster.vsanfs.local 2020300912 7200 3600 1209600 3600 ; SOA
+
+@ IN TXT "This is a CoreDNS [INTERNAL] for vsanfs.local v0.1" ;
+
+vsanfs.local.		IN A 10.10.11.1
+fs1.vsanfs.local.	IN A 10.10.11.1
+fs2.vsanfs.local.	IN A 10.10.11.2
+fs3.vsanfs.local.	IN A 10.10.11.3
+fs4.vsanfs.local.	IN A 10.10.11.4
+
+1.11.10.10.in-addr.arpa. IN PTR fs1.vsanfs.local.
+2.11.10.10.in-addr.arpa. IN PTR fs2.vsanfs.local.
+3.11.10.10.in-addr.arpa. IN PTR fs3.vsanfs.local.
+4.11.10.10.in-addr.arpa. IN PTR fs4.vsanfs.local.
+

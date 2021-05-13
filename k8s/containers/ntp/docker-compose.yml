@@ -1,0 +1,10 @@
+version: '3'
+services:
+  ntp:
+    image: ntpd/ntpd
+    cap_add:
+     - SYS_TIME
+    ports:
+            - "10.1.1.31:123:123/udp"
+    restart: always
+
