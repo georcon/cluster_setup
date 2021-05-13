@@ -2,13 +2,23 @@ sdte.dev. IN SOA dns.sdte.dev. hostmaster.sdte.dev 2020300912 7200 3600 1209600 
 
 @ IN TXT "This is a CoreDNS [INTERNAL] for sdte.dev v0.3" ;
 
-vpn.sdte.dev.				IN A 59.167.63.236;
+;vpn.sdte.dev.		IN A 144.139.116.59;
 jira.sdte.dev.     	IN A 10.10.110.254;
-core.sdte.dev.     	IN A 10.10.110.254;
-sd.sdte.dev.       	IN A 10.10.110.254;
+;core.sdte.dev.     	IN A 10.10.110.254;
+;sd.sdte.dev.       	IN A 10.10.110.254;
 bitbucket.sdte.dev.	IN A 10.10.110.254;
 bamboo.sdte.dev.	IN A 10.10.110.254;
 confluence.sdte.dev.	IN A 10.10.110.254;
+fecru.sdte.dev.		IN A 10.10.110.254;
 keycloak.sdte.dev.	IN A 10.10.110.254;
 sdte.dev.		IN A 10.10.110.254;
+;vdi.sdte.dev.		IN A 10.10.110.254;
+;phpipam.sdte.dev.	IN A 10.10.110.254;
+;conjure.sdte.dev.	IN A 10.10.110.254;
+ejbca.sdte.dev.		IN A 10.10.110.1;
+soc.sdte.dev.		IN A 10.1.1.100;
+ipam.sdte.dev.		IN A 10.10.110.254;
+sqce.sdte.dev.		IN A 10.10.110.254;
+sq.sdte.dev.		IN A 10.10.110.254;
+
 

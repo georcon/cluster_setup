@@ -1,0 +1,8 @@
+
+sdte.dev:53 {
+    file /root/sdte.dev.db
+    log
+    errors
+}
+
+

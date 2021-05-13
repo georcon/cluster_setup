@@ -1,0 +1,43 @@
+sdte.dev. IN SOA dns.sdte.dev. hostmaster.sdte.dev 2021020112 7200 3600 1209600 3600 ; SOA
+
+@ IN TXT "This is a CoreDNS [EXTERNAL] for sdte.dev v0.5.1" ;
+
+;SDTE Public Access
+vpn.sdte.dev.		IN A 144.139.116.59;
+sdte.dev.		IN A 144.139.116.59;
+orphan.sdte.dev.	IN A 59.167.63.236;
+
+;SDTE Externally Available Domains
+keycloak.sdte.dev.	IN CNAME sdte.dev.
+jira.sdte.dev.		IN CNAME sdte.dev.
+confluence.sdte.dev.	IN CNAME sdte.dev.
+;SDTE Public Nameservers
+ns1.sdte.dev.		IN A 144.139.116.59;
+ns2.sdte.dev.		IN A 144.139.116.59;
+
+sdte.dev.		IN NS ns1.sdte.dev.;
+sdte.dev.		IN NS ns2.sdte.dev.;
+
+;JCOMS Public Access
+dco.sdte.dev. 		IN CNAME dcolab.ddns.net.;
+*.dco.sdte.dev. 	IN CNAME dco.sdte.dev.;
+
+
+;EMAIL records
+;MX Records. Although no incoming mail (yet) SPAMASSASIN likes to see them apparently
+
+sdte.dev.		IN MX 10 nomail.sdte.dev. ;
+;Fake A record for nomail
+nomail.sdte.dev.	IN A 144.139.116.59;
+;SPF
+sdte.dev.		IN TXT "v=spf1 a -all";
+;DMARC
+_dmarc.sdte.dev.	IN TXT "v=DMARC1; p=none";
+;DKIM
+_dkim._domainkey.sdte.dev. IN TXT "v=DKIM1; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAuo6g4dlxPql2keuerKCM+oawoFb0q2mrj9OckY1aLGLP4+mikipKw0eXDXvgE4SvZkWxqtrTCHVGsxZZ+8KVLdk68BBBkOPhUPQ4Nwh5Uag9bkqmXeTy9EsD2EenmT5yqWT1iPIV3fM0G6zZi7Pei02vu2k2Nvk7FZ3aPmB0HGNL7kA7VRk739LSmaR6w3TmPx68aioszZHIsgkF2FOoQXguUUAyfLbpr0UU9hkGFHREvSIiH1iPs2jzR3HVJ2spaXgtJsQrG7U3klAwth7F2VSTer9BDS6ww2eCfi7WVaVgVblIWArwq7HxRHZOKoz26j3Od9yDxNI49aKO/5LG9QIDAQAB"
+
+;; DNS ACME challenges for LetsEncrypt
+;;_acme-challenge.certest.dco.sdte.dev. IN TXT a6HXnVQu9PMLryEl8nmY0zDP8By9fSTV5FTK_BEOPjM
+;_acme-challenge.testpage.sdte.dev. IN TXT O-XyVdkwiizYLm_v_kCWh7op76h3GKa5N3hVSIPAR-s;
+;_acme-challenge.jira.sdte.dev. IN TXT 3QtPtoXI3l0dn3SWGG7bV9Y8Bqe_NFMZkSGwClgfCVM;
+;auth.sdte.dev.       IN TXT "v=spf1 mx a:auth.sdte.dev a:stde.dev -all" ;

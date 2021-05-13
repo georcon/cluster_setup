@@ -10,6 +10,12 @@ sdte.dev:53 {
     errors
 }
 
+vsanfs.local:53 {
+    file /root/vsanfs.local.db
+    log
+    errors
+}
+
 sdte.local:53 {
     forward . 10.10.10.21 10.10.10.22
     log
@@ -17,6 +23,30 @@ sdte.local:53 {
 }
 
 10.10.10.0/24 {
+    forward . 10.10.10.21 10.10.10.22
+    log
+    errors
+}
+
+10.10.11.0/24 {
+    file /root/vsanfs.local.db
+    log
+    errors
+}
+
+10.10.107.0/24 {
+    forward . 10.10.10.21 10.10.10.22
+    log
+    errors
+}
+
+10.10.108.0/24 {
+    forward . 10.10.10.21 10.10.10.22
+    log
+    errors
+}
+
+10.10.109.0/24 {
     forward . 10.10.10.21 10.10.10.22
     log
     errors
