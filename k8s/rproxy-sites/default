@@ -1,0 +1,31 @@
+server {
+	listen 80;
+
+	listen 443 ssl;
+	#
+	# Note: You should disable gzip for SSL traffic.
+	# See: https://bugs.debian.org/773332
+	#
+	# Read up on ssl_ciphers to ensure a secure configuration.
+	# See: https://bugs.debian.org/765782
+
+	ssl_certificate		/etc/ssl/sdte/sdte.dev/sdte.dev-chain.pem;
+	ssl_certificate_key	/etc/ssl/sdte/sdte.dev/sdte.dev.key;
+
+	if ($scheme != "https") {
+		return 301 https://$host$request_uri;
+	}
+
+
+	root /var/www/sdtelanding/;
+
+	index index.html;
+
+	server_name sdte.dev;
+
+	location / {
+		# First attempt to serve request as file, then
+		# as directory, then fall back to displaying a 404.
+		try_files $uri $uri/ =404;
+	}
+}

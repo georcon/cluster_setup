@@ -1,0 +1,44 @@
+server {
+	listen 443 ssl;
+
+
+	root /var/www/html;
+	
+	server_name fecru.sdte.dev;
+
+	# Add index.php to the list if you are using PHP
+	index indexjira.html;
+
+	ssl_certificate		/etc/ssl/sdte/fecru.sdte.dev/fecru.sdte.dev-chain.pem;
+	ssl_certificate_key	/etc/ssl/sdte/fecru.sdte.dev/fecru.sdte.dev.key;
+
+	if ($scheme != "https") {
+		return 301 https://$host$request_uri;
+	}
+	#ssl_protocols	TLSv1 TLSv1.1 TLSv1.2
+	#ssl_ciphers HIGH:!aNULL:!MD5
+
+	location / {
+    		proxy_cache_bypass  $http_upgrade;
+
+    		proxy_set_header Upgrade           $http_upgrade;
+	    	proxy_set_header Connection        "upgrade";
+    		proxy_set_header Host              $host;
+    		proxy_set_header X-Real-IP         $remote_addr;
+    		proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
+    		proxy_set_header X-Forwarded-Proto $scheme;
+    		proxy_set_header X-Forwarded-Host  $host;
+    		proxy_set_header X-Forwarded-Port  $server_port;
+
+	        proxy_pass http://10.10.110.20:8084;
+
+	}
+
+# 	location / {
+#		# First attempt to serve request as file, then
+#		# as directory, then fall back to displaying a 404
+#		try_files $uri $uri/ =404;
+#	}
+
+}
+
